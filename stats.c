@@ -40,10 +40,11 @@ void main() {
   size_t arrsize = sizeof(test)/sizeof(test[0]);
   /* Statistics and Printing Functions Go Here */
   print_array(test, arrsize);
-  printf("\nmin: %d",find_minimum(test, arrsize));
-  printf("\nmax: %d",find_maximum(test, arrsize));
-  printf("\nmedian: %d",find_median(test, arrsize));
-  printf("\nmean: %d",find_mean(test, arrsize));
+  print_statistics(test, arrsize);
+  //printf("\nmin: %d",find_minimum(test, arrsize));
+  //printf("\nmax: %d",find_maximum(test, arrsize));
+  //printf("\nmedian: %d",find_median(test, arrsize));
+  //printf("\nmean: %d",find_mean(test, arrsize));
   sort_array(test, arrsize);
 }
 
@@ -54,6 +55,7 @@ int compare (const void * a, const void * b)
 }
 
 int print_array(unsigned char arr[], size_t arrsize){
+  printf("\narray: ");
   for(int i=0; i<arrsize; i++){
 		printf("%d ", arr[i]);        
   }
@@ -106,4 +108,10 @@ int sort_array(unsigned char arr[], size_t arrsize){
   }
 }
 
+void print_statistics(unsigned char arr[], size_t arrsize){
+  printf("\nmin: %d",find_minimum(arr, arrsize));
+  printf("\nmax: %d",find_maximum(arr, arrsize));
+  printf("\nmedian: %d",find_median(arr, arrsize));
+  printf("\nmean: %d",find_mean(arr, arrsize));
+}
 /* Add other Implementation File Code Here */
