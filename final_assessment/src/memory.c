@@ -21,6 +21,7 @@
  *
  */
 #include "../include/common/memory.h"
+#include <stddef.h>
 
 /***********************************************************
  Function Definitions
@@ -49,29 +50,41 @@ void clear_all(char * ptr, unsigned int size){
 }
 
 uint8_t * my_memmove(uint8_t * src, uint8_t * dst, size_t length){
-  
+  int8_t var[sizeof(length)];
+  my_memcopy(src, var, length);
+  my_memcopy(var, dst, length);
+   
+  return dst;
 }
 
 uint8_t * my_memcopy(uint8_t * src, uint8_t * dst, size_t length){
-
+  while(length){
+        length--;
+        *(dst++) = *(src++);
+    }    
+  return dst;
 }
 
 uint8_t * my_memset(uint8_t * src, size_t length, uint8_t value){
-
+  while (length){
+        length--;
+        *(src++) = value;
+    }
+    return src;
 }
 
 uint8_t * my_memzero(uint8_t * src, size_t length){
-
+  return my_memset(src, length, 0);
 }
 
 uint8_t * my_reverse(uint8_t * src, size_t length){
-
+  //??
 }
 
 int32_t * reserve_words(size_t length){
-
+  return malloc(length*sizeof(length));
 }
 
 void free_words(int32_t * src){
-
+  return free(src);
 }
